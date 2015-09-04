@@ -9,6 +9,7 @@ import android.widget.DigitalClock;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+@SuppressWarnings("deprecation")
 public class MaxActivity extends Activity {
 	/** Called when the activity is first created. */
 	@Override
