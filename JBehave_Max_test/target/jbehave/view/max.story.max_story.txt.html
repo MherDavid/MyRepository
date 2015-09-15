@@ -11,17 +11,36 @@
 Sample story
 (max/story/max_story.story)
 Narrative:
-In order to communicate effectively to the business some functionality
-As a development team
+In order to test the android application
+As a programmer
 I want to use Behaviour-Driven Development
-Scenario: Testing write text in Max.apk
-Given run the program
-When I input 7
-Then on the texteditor should writed 7
-
 Scenario: Testing David button click
-When I click on the David button
-Then Texteditor should  writed David
+Given run the application
+When I click on the button with name David
+Then text editor with name David_T should be DavidMher
+
+Scenario: Testing write text in Max.apk
+When I input 7
+Then text editor with this id Mher_TEXT should be 8 (FAILED)
+(junit.framework.ComparisonFailure: null expected:<[8]> but was:<[7]>)
+
+Scenario: Testing button click
+Examples:
+When I click on the button with <id>
+Then text editor whith id Mher_TEXT should be <Text>
+
+|id|Text|
+|clear||
+|Mher|MherDavid|
+
+Example: {id=clear, Text=}
+When I click on the button with clear
+Then text editor whith id Mher_TEXT should be 
+
+Example: {id=Mher, Text=MherDavid}
+When I click on the button with Mher
+Then text editor whith id Mher_TEXT should be MherDavid
+
 
 
 

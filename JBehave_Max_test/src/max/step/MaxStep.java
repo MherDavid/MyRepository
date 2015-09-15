@@ -1,7 +1,10 @@
 package max.step;
 
 
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
@@ -23,12 +26,24 @@ public class MaxStep {
 
 	private AppiumDriver<AndroidElement> driver;
 	
-	@Given("run the program")
+	
+	@AfterScenario(uponOutcome=AfterScenario.Outcome.SUCCESS)
+	public void afterSuccessfulScenario() {
+	   System.out.println("------After SUCCESS Scenario-----");
+	}
+	     
+	@AfterScenario(uponOutcome=AfterScenario.Outcome.FAILURE)
+	public void afterFailedScenario() {
+		System.out.println("------After FAILURE Scenario------");
+	}
+	
+	 
+	//@BeforeScenario
+	@Given ("run the application")
 	public void running() throws MalformedURLException {
+		System.out.println("-----Run the application--------");
 		// set up appium
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		//capabilities.setCapability("automationName", "Selendroid");
-		//capabilities.setCapability("device", "Selendroid");
 		capabilities.setCapability("deviceName","TestPhone");
 		capabilities.setCapability("platformVersion", "4.4.2");
 		capabilities.setCapability("app", "/home/student/workspace/MyRepository/Max/bin/Max.apk");
@@ -37,6 +52,12 @@ public class MaxStep {
 		driver = new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 	}
 	
+	
+	/*@AfterScenario
+	public void tearDown() throws Exception {
+		System.out.println("------Close the application--------");
+		driver.quit();
+		}*/
 	
 	@When("I input $number")
 	public void addNumber(int x){ 
@@ -48,70 +69,48 @@ public class MaxStep {
 		}
 	}
 	
-	@Then("on the texteditor should writed $result")
-	public void testResult(int output) {
-		try {
-			AndroidElement add = driver.findElement(By.id("Mher_TEXT"));
-			String actualText = add.getText();
-			String expectedText = String.valueOf(output);
-			Assert.assertEquals(expectedText, actualText);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-
-	@When("I click on the clear button")
-	public void click_clear_button(){
+	@When("I click on the button with <id>")
+	public void clickButtonWithId(@Named("id") String buttonId){
 		try{
-			AndroidElement click = driver.findElement(By.id("clear"));
+			AndroidElement click = driver.findElement(By.id(buttonId));
 			click.click();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	@When("I click on the Mher button")
-	public void click_Mher_button(){
+	@When("I click on the button with name $buttonName")
+	public void clickButtonWithName(@Named("buttonName") String buttonName){
 		try{
-			AndroidElement click = driver.findElement(By.id("Mher"));
+			AndroidElement click = driver.findElement(By.name(buttonName));
 			click.click();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	@Then("Texteditor should writed $name")
-	public void testResult_2(String value){
+	
+	@Then("text editor whith id $textEditorId should be <Text>")
+	@Alias("text editor with this id $textEditorId should be $Text")
+	public void checkTextEditorById(@Named("textEditorId") String textId, @Named("Text") String expectedText){
 		try{
-			AndroidElement click = driver.findElement(By.id("Mher_TEXT"));
+			AndroidElement click = driver.findElement(By.id(textId));
 			String realText = click.getText();
-			String outcome = value;
-			Assert.assertEquals(outcome, realText);
+			Assert.assertEquals(expectedText, realText);
 		} catch(Exception e) {
 			e.printStackTrace();	
 		}
 	}
-
-		
-	@When("I click on the David button")
-	public void click_David_button(){
+	
+	@Then("text editor with name $textEditorName should be $expectedtext")
+	public void checkTextEditorByName(@Named("textEditorName") String editorName, @Named("expectedtext") String expectedText){
 		try{
-			AndroidElement click = driver.findElement(By.name("David"));
-			click.click();
-		} catch (Exception e) {
-			e.printStackTrace();
+			AndroidElement click = driver.findElement(By.name(editorName));
+			String realText = click.getText();
+			Assert.assertEquals(expectedText, realText);
+		} catch(Exception e) {
+			e.printStackTrace();	
 		}
 	}
 	
-	@Then("Texteditor should writed $result2")
-	public void testResult3(String output) {
-		try {
-			AndroidElement add = driver.findElement(By.name("David_T"));
-			String actualText = add.getText();
-			String expectedText = output;
-			Assert.assertEquals(expectedText, actualText);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 }
