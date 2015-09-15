@@ -29,7 +29,7 @@ public class MaxActivity extends Activity {
 		David.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				David_T.setText(David_T.getText() + "David");
+				David_T.setText(David_T.getText() + "DavidMher");
 				// TODO Auto-generated method stub
 			}
 		});
@@ -38,7 +38,7 @@ public class MaxActivity extends Activity {
 		Mher.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				Mher_T.setText(Mher_T.getText() + "Mher");
+				Mher_T.setText(Mher_T.getText() + "MherDavid");
 
 				// TODO Auto-generated method stub
 			}

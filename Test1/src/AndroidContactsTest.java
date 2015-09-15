@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 	public class AndroidContactsTest {
@@ -36,9 +36,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 	
 	@Test
 	public void addText() throws Exception{
-	WebElement el = driver.findElement(By.id("Mher"));
-	el.click();
+	//WebElement el = driver.findElement(By.id("Mher"));
+	//el.click();
 	driver.findElement(By.id("Mher_TEXT")).sendKeys("Hellowwww");
-	tearDown();
+	//tearDown();
 	}
 	}
