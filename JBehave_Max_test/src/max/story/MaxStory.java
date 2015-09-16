@@ -15,6 +15,8 @@ import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.CandidateSteps;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.ParameterControls;
+import org.jbehave.core.parsers.RegexStoryParser;
+import org.jbehave.core.model.ExamplesTableFactory;
 
 
 
@@ -24,8 +26,8 @@ public class MaxStory extends JUnitStory {
 		   
 		return new MostUsefulConfiguration()
 		//Example annotation configure
-		.useParameterControls(new ParameterControls().useDelimiterNamedParameters(true))
-		//.useParameterControls(new ParameterControls().useNameDelimiterLeft("[").useNameDelimiterRight("]"))
+		.useParameterControls(new ParameterControls().useDelimiterNamedParameters(true))	
+		 .useStoryParser(new RegexStoryParser(new ExamplesTableFactory(new LoadFromClasspath(this.getClass()))))
 				// where to find the stories
 				.useStoryLoader(new LoadFromClasspath(this.getClass()))
 				// CONSOLE and TXT reporting

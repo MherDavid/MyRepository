@@ -1,7 +1,7 @@
 package max.step;
 
 
-import org.jbehave.core.annotations.AfterScenario;
+
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -26,20 +26,12 @@ public class MaxStep {
 
 	private AppiumDriver<AndroidElement> driver;
 	
-	
-	@AfterScenario(uponOutcome=AfterScenario.Outcome.SUCCESS)
-	public void afterSuccessfulScenario() {
-	   System.out.println("------After SUCCESS Scenario-----");
-	}
-	     
-	@AfterScenario(uponOutcome=AfterScenario.Outcome.FAILURE)
-	public void afterFailedScenario() {
-		System.out.println("------After FAILURE Scenario------");
+	@Given("gvidon")
+	public void afterEachScenare(){	
+		System.out.println("********");
 	}
 	
-	 
-	//@BeforeScenario
-	@Given ("run the application")
+	@Given("run the application")
 	public void running() throws MalformedURLException {
 		System.out.println("-----Run the application--------");
 		// set up appium
@@ -52,14 +44,7 @@ public class MaxStep {
 		driver = new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 	}
 	
-	
-	/*@AfterScenario
-	public void tearDown() throws Exception {
-		System.out.println("------Close the application--------");
-		driver.quit();
-		}*/
-	
-	@When("I input $number")
+		@When("I input $number")
 	public void addNumber(int x){ 
 		try {
 			AndroidElement add = driver.findElement(By.id("Mher_TEXT"));
