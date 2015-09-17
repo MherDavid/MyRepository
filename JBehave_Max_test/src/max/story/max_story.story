@@ -5,10 +5,7 @@ In order to test the android application
 As a programmer
 I want to use Behaviour-Driven Development
 
-Lifecycle:
-Before:
-Given gvidon
-					
+			
 Scenario: Testing David button click
 Given run the application
 When I click on the button with name David

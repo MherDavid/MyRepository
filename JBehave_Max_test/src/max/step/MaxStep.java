@@ -26,10 +26,6 @@ public class MaxStep {
 
 	private AppiumDriver<AndroidElement> driver;
 	
-	@Given("gvidon")
-	public void afterEachScenare(){	
-		System.out.println("********");
-	}
 	
 	@Given("run the application")
 	public void running() throws MalformedURLException {
