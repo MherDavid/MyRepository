@@ -1,0 +1,5 @@
+#surefire
+#Wed Sep 23 16:42:45 AMT 2015
+user.dir=/home/student/workspace/MyRepository/testPhoneapp
+localRepository=/home/student/.m2/repository
+basedir=/home/student/workspace/MyRepository/testPhoneapp
