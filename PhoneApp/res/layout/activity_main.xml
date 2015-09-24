@@ -8,33 +8,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.phoneapp.MainActivity" >
 
-    <ScrollView
-        android:id="@+id/scroll"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-        </LinearLayout>
-    </ScrollView>
-
-    <ImageSwitcher
-        android:id="@+id/imageSwitcher1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" >
-    </ImageSwitcher>
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </SeekBar>
 
     <ListView
         android:id="@+id/myListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageSwitcher1" >
+        android:layout_below="@+id/myButton" >
 
     </ListView>
+
+    <TextView
+        android:id="@+id/myTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/seekBar"
+        android:layout_below="@+id/seekBar"
+        android:text="Значение: 0"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/myButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/myTextView"
+        android:text="newActivity" />
 
 </RelativeLayout>
